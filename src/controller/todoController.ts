@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import Todos from "../model/todoModel";
 
 const todos  = [
     {
@@ -17,13 +18,14 @@ export const getTodos = (req: Request, res: Response) => {
     res.json(todos);
 }
 
-export const postTodos = (req: Request, res: Response) => {
+export const postTodos = async (req: Request, res: Response) => {
     const newTodo = {
-        "id": 3,
         "task": "clean",
         "completed": false
     }
 
-    const data: object = newTodo;
+
+    const data = new Todos(newTodo);
+    await data.save();
     res.status(201).json(data);
 }
