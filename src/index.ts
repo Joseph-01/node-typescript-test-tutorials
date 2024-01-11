@@ -1,5 +1,12 @@
-import myApp from "./app";
+import myServer from "./app";
+import startConnection from "./config";
+import dotenv from "dotenv";
+dotenv.config();
 
-const app = myApp();
-const port: number = 3031;
-app.listen(port)
+const {PORT} = process.env
+const app = myServer();
+
+startConnection()
+app.listen(PORT, () => {
+  console.log(`All running`);
+});

@@ -1,15 +1,11 @@
-import express, { Request, Response } from "express";
-import { todoRouter } from "./routes/todoRouter";
-// import config from "./configuration/test-config";
+import express, {Express} from "express";
+import userRouter from "./routes/userRouter";
 
-const app: express.Application = express();
+const server: Express = express()
 
 export default function () {
-  app.use("/todos", todoRouter);
 
-  app.get("/", async(req: Request, res: Response) => {
-    res.json({"msg": "hello"})
-  });
-
-  return app;
+    server.use(express.json())
+    server.use("/users", userRouter)
+    return server;
 }

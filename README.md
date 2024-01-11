@@ -1,2 +1,2 @@
-# node-typescript-test-tuts
-learning testing backend services with typescript
+# node-typescript-setup-config
+typescript configuration for nodejs
